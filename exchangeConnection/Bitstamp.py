@@ -46,8 +46,8 @@ class Bitstamp:
         verb = 'POST' if authenticate else 'GET'
         return super(Bitstamp, self).request(verb, endpoint, authenticate=authenticate, **kwargs)
 
-    def get_currency_pair_balance(self, currency_balance):
-        currency_pair_balance_api_endpoint = 'https://www.bitstamp.net/api/v2/balance/'.format(currency_balance)
+    def get_currency_pair_balance(self):
+        currency_pair_balance_api_endpoint = 'https://www.bitstamp.net/api/v2/balance/'
         nonce = self.get_nonce()
         PARAMS = {'key': self.get_api_key(),
                   'signature': self.get_signature(self.get_customer_id(), self.get_api_key(), nonce),
